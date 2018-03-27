@@ -3,8 +3,6 @@ package com.formation.annuaire.entities;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.formation.annuaire.carnets.Civilite;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,11 +22,11 @@ import javax.validation.constraints.Pattern;
 @Table(name="personne")
 public class Carnet {
 	@Id
-	@GeneratedValue //pour la base donnee 
+	@GeneratedValue //pour la base donnee pour generer l'auto-incrementation
     private Long id;
     //@Pattern(regexp="(?i)[a-z] {2,50}", message="{com.formation.annuaire.hello.civilite}")
 	
-	@Enumerated(EnumType.STRING) // pour la base de donne 
+	@Enumerated(EnumType.STRING) // pour la base de donne pour rendre l'enumeraion ne string
 	@Column(length= 8) // pour la base de donnee la taille sera definie
     private Civilite civilite;
 	@NotBlank(message="{com.formation.annuaire.hello.nom}")

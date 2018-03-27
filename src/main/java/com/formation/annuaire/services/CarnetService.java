@@ -12,7 +12,6 @@ import com.formation.annuaire.repositories.CarnetRepositories;
 public class CarnetService {
 	@Autowired
 	CarnetRepositories ram;
-	
 	public List<Carnet> getAll() {
 		return ram.findAll();
 		

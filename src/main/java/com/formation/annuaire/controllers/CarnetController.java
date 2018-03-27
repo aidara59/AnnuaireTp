@@ -6,8 +6,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.formation.annuaire.carnets.Civilite;
 import com.formation.annuaire.entities.Carnet;
+import com.formation.annuaire.entities.Civilite;
 import com.formation.annuaire.services.CarnetService;
 
 import java.util.ArrayList;

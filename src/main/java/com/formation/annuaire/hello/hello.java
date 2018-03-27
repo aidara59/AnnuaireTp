@@ -11,7 +11,7 @@ public class hello {
     @GetMapping("/")
     @ResponseBody
     public String index(){
-        return "Hello world!!";
+        return "Bonjour tout le monde!!";
     }
 
     @GetMapping("test")
