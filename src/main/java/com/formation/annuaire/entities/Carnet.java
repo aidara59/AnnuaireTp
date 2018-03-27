@@ -9,15 +9,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-@RestController
+@Entity
+@Table(name="personne")
 public class Carnet {
-	
-    private Integer id;
+	@Id
+	@GeneratedValue //pour la base donnee 
+    private Long id;
     //@Pattern(regexp="(?i)[a-z] {2,50}", message="{com.formation.annuaire.hello.civilite}")
+	
+	@Enumerated(EnumType.STRING) // pour la base de donne 
+	@Column(length= 8) // pour la base de donnee la taille sera definie
     private Civilite civilite;
 	@NotBlank(message="{com.formation.annuaire.hello.nom}")
 	//@Pattern(regexp="(?i)[a-z] {2,50}", message="{com.formation.annuaire.hello.nom}")
@@ -34,11 +46,11 @@ public class Carnet {
 	// @Pattern(regexp="(?i)[a-z] {}", message="{com.formation.annuaire.hello.email}") 
     private String email;
 	
-
+	
     public Carnet() {
     }
    
-    public Carnet(Integer id, Civilite civilite, String nom, String prenom, String dateDeNaissance, String tel, String email, String cp, String ville) {
+    public Carnet(Long id, Civilite civilite, String nom, String prenom, String dateDeNaissance, String tel, String email, String cp, String ville) {
         this.id = id;
         this.civilite = civilite;
         this.nom = nom;
@@ -50,11 +62,11 @@ public class Carnet {
         this.ville = ville;
     }
 
-    public Integer getId() {
+    public Long getId() {
     
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
     
         this.id = id;
     }
