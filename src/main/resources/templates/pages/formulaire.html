@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>formulaire</title>
+</head>
+<body>
+<form th:action="@{/carnet}" th:object="${carnet}" method="post">
+
+    <label for="mr">Monsieur</label>
+    <input type="radio" id="mr" th:field="*{civilite}" value="MONSIEUR">
+    <label for="mme">Madame</label>
+    <input type="radio" id="mme" th:field="*{civilite}" value="MADAME">
+    <p th:if="${#fields.hasErrors('civilite')}" th:errors="*{civilite}"></p>
+    <br>
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" th:field="*{nom}">
+     <p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></p>
+    <br>
+    <label for="prenom">Prenom</label>
+    <input type="text" id="prenom" name="*{prenom}">
+     <p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></p>
+    <br>
+    <label for="date">Date de naissance</label>
+    <input type="date" id="date" th:field="*{dateDeNaissance}">
+     <p th:if="${#fields.hasErrors('dateDeNaissance')}" th:errors="*{dateDeNaissance}"></p>
+    <br>
+    <label for="tel">Téléphone</label>
+    <input type="text" id="tel" th:field="*{tel}">
+     <p th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></p>
+    <br>
+    <label for="email">email</label>
+    <input type="email" id="email" th:field="*{email}">
+     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    <br>
+    <label for="cp">cp</label>
+    <input type="number" id="cp" th:field="*{cp}">
+     <p th:if="${#fields.hasErrors('cp')}" th:errors="*{cp}"></p>
+    <br>
+    <label for="ville">ville</label>
+    <input type="text" id="ville" th:field="*{ville}">
+    <p th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></p>
+    <input type="submit" value="Envoyer">
+</form>
+
+
+</body>
+</html>

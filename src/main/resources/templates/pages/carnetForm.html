@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Carnet</title>
+</head>
+<body>
+
+<!-- Formulaire tout a fait normal renoyant vers url /carnet, les informations du formulaire afin de les traiter  -->
+<form action="/carnet" method="post">
+    <label for="mr">Monsieur</label>
+    <input type="radio" id="mr" name="civilite" value="MONSIEUR">
+    <label for="mme">Madame</label>
+    <input type="radio" id="mme" name="civilite" value="MADAME">
+    <br>
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom">
+    <br>
+    <label for="prenom">Prenom</label>
+    <input type="text" id="prenom" name="prenom">
+    <br>
+    <label for="date">Date de naissance</label>
+    <input type="date" id="date" name="dateDeNaissance">
+    <br>
+    <label for="tel">Téléphone</label>
+    <input type="text" id="tel" name="tel">
+    <br>
+    <label for="email">email</label>
+    <input type="email" id="email" name="email">
+    <br>
+    <label for="cp">cp</label>
+    <input type="number" id="cp" name="cp">
+    <br>
+    <label for="ville">ville</label>
+    <input type="text" id="ville" name="ville">
+    <input type="submit" value="Envoyer">
+</form>
+</body>
+</html>
