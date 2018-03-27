@@ -1,17 +1,25 @@
-package com.formation.annuaire.carnets;
+package com.formation.annuaire.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.formation.annuaire.carnets.Civilite;
+import com.formation.annuaire.entities.Carnet;
+import com.formation.annuaire.services.CarnetService;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 @RestController
 public class CarnetController {
-
+	@Autowired
+	private CarnetService sap;
+	
     private List<Carnet> listeCarnets = new ArrayList<>(Arrays.asList(
             new Carnet(1, Civilite.MONSIEUR, "Besson", "Luc", "1959-13-18","0000000000", "5 avenue de l'Element", "75015", "Paris"),
             new Carnet(2, Civilite.MADAME, "Ullmann", "Liv", "1938-12-16","0101010101", "1-16-5", "22", "Tokyo"),
@@ -85,4 +93,25 @@ public class CarnetController {
         }
         return null;
     }
+    /*
+    private ModelAndView modelAndView(String page, List<Object> tabVar){
+        ModelAndView maVue = new ModelAndView(page);
+        for( Object str : tabVar){
+        	maVue.addObject(str.toString(),str);
+        }
+        return maVue;
+    }
+    @RequestMapping(value ="/carnet/{id}")
+    public void delete(@PathVariable Long id){
+    	Iterator<Carnet> it = listeCarnets.iterator();
+    	while(it.hasNext()){
+    		Carnet carnet = it.next();
+    		if (carnet.getId() == id){
+    			it.remove();
+    		}
+    	}
+    	//listeCarnet.removeIf(obj -> obj.getId().equals(id)); // Destroy à partir de java 8
+    }
+}
+*/
 }

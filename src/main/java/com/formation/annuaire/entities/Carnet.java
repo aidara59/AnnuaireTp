@@ -1,7 +1,9 @@
-package com.formation.annuaire.carnets;
+package com.formation.annuaire.entities;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.formation.annuaire.carnets.Civilite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
