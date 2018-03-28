@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,6 +65,26 @@ public class CarnetController {
 	        mav.addObject("carnet", sap.findById(id).get()); 
 	        return mav; 
 	    }
-	 
-	 
+	 @RequestMapping(method = RequestMethod.PUT, value = "/carnet")
+	    public ModelAndView update(@Validated Carnet carnet, BindingResult bindingResult){
+	        if (bindingResult.hasErrors()){
+	            return new ModelAndView("pages/carnet.html").addObject("carnet", carnet);
+	        }
+	        sap.update(carnet);
+	        return new ModelAndView("redirect:/carnet/" + carnet.getId());
+	    }
+	 @RequestMapping(method = RequestMethod.DELETE, value = "/carnet/{id}")
+	    public ModelAndView update(@PathVariable Long id){
+		 
+	        sap.delete(sap.findById(id).get());
+	        return new ModelAndView("redirect:/carnetshtml/");
+	    }
+	 @RequestMapping(value = "/carnet", method = RequestMethod.POST)
+	    public ModelAndView add(@Validated Carnet carnet, BindingResult bindingResult){
+	        if (bindingResult.hasErrors()){
+	            return new ModelAndView("pages/carnetForm.html").addObject("carnet", carnet);
+	        }
+	        sap.create(carnet);
+	        return new ModelAndView("pages/carnetForm.html").addObject("carnet", carnet);
+	    }
 	}
