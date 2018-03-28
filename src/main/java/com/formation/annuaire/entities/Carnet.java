@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -22,26 +23,30 @@ import javax.validation.constraints.Pattern;
 @Table(name="personne")
 public class Carnet {
 	@Id
-	@GeneratedValue //pour la base donnee pour generer l'auto-incrementation
+	@GeneratedValue (strategy=GenerationType.IDENTITY)//pour la base donnee pour generer l'auto-incrementation
     private Long id;
     //@Pattern(regexp="(?i)[a-z] {2,50}", message="{com.formation.annuaire.hello.civilite}")
-	
 	@Enumerated(EnumType.STRING) // pour la base de donne pour rendre l'enumeraion ne string
 	@Column(length= 8) // pour la base de donnee la taille sera definie
     private Civilite civilite;
 	@NotBlank(message="{com.formation.annuaire.hello.nom}")
 	//@Pattern(regexp="(?i)[a-z] {2,50}", message="{com.formation.annuaire.hello.nom}")
+	@Column(length=100)
     private String nom;
 	@NotBlank(message="{com.formation.annuaire.hello.prenom}")
 	//@Pattern(regexp="(?i)[a-z\\- ] {2,100}", message="{com.formation.annuaire.hello.prenom}")
+	@Column(length=100)
     private String prenom;
 	@NotBlank(message="Bonjour Tout le monde// message personnalisé avec notblank")
+	@Column(columnDefinition="date",name="dateDeNaissance")
     private String dateDeNaissance;
 	//@NotBlank
 	// @Pattern(regexp="(?i)[0-9] {2,50}", message="{com.formation.annuaire.hello.tel}")
+	@Column(name="tel", length=10)
     private String tel;
 	@NotBlank
 	// @Pattern(regexp="(?i)[a-z] {}", message="{com.formation.annuaire.hello.email}") 
+	@Column(length=100)
     private String email;
 	
 	
